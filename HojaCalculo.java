@@ -85,10 +85,7 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta() {
-        if (getNumeroFilas() == 3) {
-            return true;
-        }
-        return false;
+        return getNumeroFilas() == 3;
     }
 
     /**
