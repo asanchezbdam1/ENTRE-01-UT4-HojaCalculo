@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Asier Sánchez
  *  
  */
 public class Fila
@@ -19,16 +19,18 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
-         
-
+         this.id = id;
+         this.fecha = new Fecha(1, 1, 2020);
     }
 
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+         this.id = id;
+         this.fecha = fecha;
+         this.ingresos = ingresos;
+         this.gastos = gastos;
     }
     
     /**
@@ -36,7 +38,6 @@ public class Fila
      */
     public String getId() {
         return this.id;
-
     }
 
 
@@ -45,7 +46,6 @@ public class Fila
      */
     public Fecha getFecha() {
         return this.fecha;
-
     }
 
     /**
@@ -61,7 +61,6 @@ public class Fila
      */
     public double getGastos() {
         return this.gastos;
-
     }
 
     /**
@@ -69,7 +68,6 @@ public class Fila
      */
     public double getBeneficio() {
         return this.ingresos - this.gastos;
-
     }
     
     /**
@@ -78,8 +76,7 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return null;
-
+       return new Fila(this.id, this.fecha, this.ingresos, this.gastos);
     }
 
     /**
@@ -87,8 +84,12 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+      String aux = String.format("%14.2f€", getBeneficio());
+      if (this.getBeneficio() <  0)   {
+        aux += " **";
+      }
+      return String.format("%8s%15s%14.2f€%14.2f€%15s", 
+      this.id, this.fecha, this.ingresos, this.gastos, aux);
     }
 
      
