@@ -95,14 +95,14 @@ public class HojaCalculo
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
     public void addFila(Fila fila) {
-         if (hojaCompleta()) {
-             System.out.println(fila.getId() + " no se puede añadir en " + this.nombre);
-         }
-         switch(getNumeroFilas()) {
+        if (hojaCompleta()) {
+            System.out.println(fila.getId() + " no se puede añadir en " + this.nombre);
+        }
+        switch(getNumeroFilas()) {
             case 0: fila1 = fila; break;
             case 1: fila2 = fila; break;
             case 2: fila3 = fila; break;
-         }
+        }
     }
 
     /**
@@ -111,7 +111,7 @@ public class HojaCalculo
      * (evita repetir código)
      */
     public void addFila(String id, Fecha fecha, double ingresos, double gastos) {
-         addFila(new Fila(id, fecha, ingresos, gastos));
+        addFila(new Fila(id, fecha, ingresos, gastos));
     }
 
     /**
@@ -162,7 +162,7 @@ public class HojaCalculo
      */
     public String toString() {
         String str = String.format("%s \n%8s%15s%15s%15s%15s", this.nombre, "", "FECHA",
-        "INGRESOS", "GASTOS", "BENEFICIO");
+                "INGRESOS", "GASTOS", "BENEFICIO");
         String aux1 = "";
         String aux2 = "";
         String aux3 = "";
@@ -174,7 +174,7 @@ public class HojaCalculo
         str += aux1 + aux2 + aux3;
         str += "\n---------------------------------------------------------------------------";
         str += "\n" + String.format("%23s%14.2f€%14.2f€%14.2f€", "", this.getTotalIngresos(),
-        this.getTotalGastos(), this.getBeneficio());
+            this.getTotalGastos(), this.getBeneficio());
         return str;
     }
 
@@ -184,12 +184,17 @@ public class HojaCalculo
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
     public HojaCalculo duplicarHoja() {
-       HojaCalculo hojaClonada = new HojaCalculo("Duplicada " + this.nombre);
-       hojaClonada.addFila(this.fila1.duplicar());
-       hojaClonada.addFila(this.fila2.duplicar());
-       hojaClonada.addFila(this.fila3.duplicar());
-       return hojaClonada;
+        HojaCalculo hojaClonada = new HojaCalculo("Duplicada " + this.nombre);
+        switch (getNumeroFilas()) {
+            case 3:
+            hojaClonada.addFila(this.fila3.duplicar());
+            case 2:
+            hojaClonada.addFila(this.fila2.duplicar());
+            case 1:
+            hojaClonada.addFila(this.fila1.duplicar());
+            break;
+        }
+        return hojaClonada;
     }
 
-   
 }

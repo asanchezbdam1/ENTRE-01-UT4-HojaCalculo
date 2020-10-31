@@ -76,7 +76,7 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return new Fila(this.id, this.fecha, this.ingresos, this.gastos);
+       return new Fila(this.id, new Fecha(fecha.getDia(), fecha.getMes(), fecha.getAño()), this.ingresos, this.gastos);
     }
 
     /**
