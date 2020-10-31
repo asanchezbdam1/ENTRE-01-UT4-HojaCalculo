@@ -185,9 +185,9 @@ public class HojaCalculo
      */
     public HojaCalculo duplicarHoja() {
        HojaCalculo hojaClonada = new HojaCalculo("Duplicada " + this.nombre);
-       hojaClonada.addFila(this.fila1);
-       hojaClonada.addFila(this.fila2);
-       hojaClonada.addFila(this.fila3);
+       hojaClonada.addFila(this.fila1.duplicar());
+       hojaClonada.addFila(this.fila2.duplicar());
+       hojaClonada.addFila(this.fila3.duplicar());
        return hojaClonada;
     }
 
